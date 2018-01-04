@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <script>
+            const onSubmit = () => {
+                const ws = new WebSocket("ws://localhost:5000")
+                console.log(ws)
+                ws.onopen = () => {
+                    console.log("Connected to websocket");
+                    ws.send("Hello")
+                }
+                ws.onmessage = (event) => {
+                    console.log(event.data);
+                   // setTimeout(()=> ws.send("After 10 secconds"),40000)
+                }
+            }
+        
+        </script>
+        
+        <button type="submit" onclick="onSubmit()">Send</button>
+    </body>
+</html>
